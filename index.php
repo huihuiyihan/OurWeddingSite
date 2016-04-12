@@ -1,3 +1,8 @@
+<?php
+require_once "share/jssdk.php";
+$jssdk = new JSSDK("wxf6a267997ada030e", "6180af097d8c819428433eeed342888b");
+$signPackage = $jssdk->GetSignPackage();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,13 +147,13 @@
 
 
          /*设置音乐*/
-        .icon_audio{background: url("http://images.hspic.com/static/weixin/dream_img/on_off.png") no-repeat; background-size: 100% 100%; width:24px; height:24px; position:absolute; z-index: 999; top:8%; right:6%; }
+        .icon_audio{background: url("http://benin221.com/wp-content/uploads/2015/09/on_off.png") no-repeat; background-size: 100% 100%; width:24px; height:24px; position:absolute; z-index: 999; top:8%; right:6%; }
 
         .border_anim .icon_audio_anim{
             display:block;
             width:8px; height:8px;
             position:absolute;
-            background:url("http://images.hspic.com/static/weixin/dream_img/icon_audio_sign.png") no-repeat;
+            background:url("http://benin221.com/wp-content/uploads/2015/09/icon_audio_sign.png") no-repeat;
             background-size: 100% 100%;
             -webkit-animation:audio_anim 2s ease-out infinite;
             -moz-animation:audio_anim 2s ease-out infinite;
@@ -304,7 +309,7 @@
     </style>
 </head>
 <body>
-<div style="height:0px;overflow:hidden;"><audio src="http://benin221.com/wp-content/uploads/2015/09/chongerfei.mp3" loop="loop" autoplay></audio></div>
+<div style="height:0px;overflow:hidden;"><audio src="http://benin221.com/wp-content/uploads/2015/09/luv_letter.mp3" loop="loop" autoplay></audio></div>
 <a href="javascript:playPause();">
     <div class="icon_audio border_anim">
         <span class="iconaudio1"><s class="icon_audio_anim"></s></span>
@@ -467,10 +472,10 @@
 <script>
     wx.config({
         debug: false,
-        appId: 'wx8f626d018722d67a',
-        timestamp: 1430900691,
-        nonceStr: 'CJYW8cObCzRalLG8',
-        signature: '5ce9f2d3ae9b90c89f3f1b23e988e2ded5fde78a',
+        appId: '<?php echo $signPackage["appId"];?>',
+        timestamp: '<?php echo $signPackage["timestamp"];?>',
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+        signature: '<?php echo $signPackage["signature"];?>',
         jsApiList: [
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
@@ -478,7 +483,7 @@
             'onMenuShareWeibo'
         ]
     });
-    var share={"tit":"付远征&周帆婚礼喜帖","desc":"2015年10月3日，欢迎大家来参加付远征&周帆的婚礼。","link":"","img":""};
+    var share={"tit":"付远征&周帆婚礼喜帖","desc":"2015年10月3日，欢迎大家来参加付远征&周帆的婚礼。","link":"","img":"http://benin221.com/wp-content/uploads/2015/09/royal.jpg"};
     wx.ready(function () {
 
 
@@ -494,14 +499,14 @@
                 // alert('用户点击发送给朋友');
             },
             success: function (res) {
-                //alert('已分享');
+                // alert('已分享');
                 share_succ();
             },
             cancel: function (res) {
-                //alert('已取消');
+                // alert('已取消');
             },
             fail: function (res) {
-                //alert(JSON.stringify(res));
+                alert(JSON.stringify(res));
             }
         });
 
